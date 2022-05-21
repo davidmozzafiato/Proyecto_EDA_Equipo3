@@ -3,7 +3,7 @@ import time
 import random
  
 pygame.init()
- 
+
 white = (255, 255, 255)
 yellow = (255, 255, 102)
 black = (0, 0, 0)
@@ -37,9 +37,9 @@ def our_snake(snake_block, snake_list):
         pygame.draw.rect(dis, black, [x[0], x[1], snake_block, snake_block])
  
  
-def message(msg, color):
+def message(msg, color, x, y):
     mesg = font_style.render(msg, True, color)
-    dis.blit(mesg, [dis_width / 6, dis_height / 3])
+    dis.blit(mesg, [dis_width / x, dis_height / y])
  
  
 def gameLoop():
@@ -62,7 +62,8 @@ def gameLoop():
  
         while game_close == True:
             dis.fill(blue)
-            message("You Lost! Press C-Play Again or Q-Quit", red)
+            message("Perdiste!", red, 6, 3)
+            message("\nPresiona la tecla C para jugar de nuevo o Q para salir.", red, 5, 2)
             Your_score(Length_of_snake - 1)
             pygame.display.update()
  
