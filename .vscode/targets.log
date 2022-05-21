@@ -10,7 +10,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 make: *** No rule to make target `all'.  Stop.
 
 
-# Make data base, printed on Fri May 20 16:57:29 2022
+# Make data base, printed on Sat May 21 00:10:12 2022
 
 # Variables
 
@@ -41,7 +41,7 @@ VSCODE_VERBOSE_LOGGING = true
 # environment
 __CFBundleIdentifier = com.microsoft.VSCode
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/78/1l8h6yx92nz9pzn3q16cvn9m0000gn/T/vscode-ipc-cb6240b1-e797-4ddc-ae47-bcc6648faeaf.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/78/1l8h6yx92nz9pzn3q16cvn9m0000gn/T/vscode-ipc-22461857-de09-4ba9-82c5-6d657074c5d6.sock
 # environment
 VSCODE_CWD = /
 # environment
@@ -53,7 +53,7 @@ ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.lWwMRUB73j/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.Kgr3C9hDZV/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -69,7 +69,7 @@ HOME = /Users/davidmozzafiato
 # default
 MAKEFILEPATH = $(shell /usr/bin/xcode-select -print-path 2>/dev/null || echo /Developer)/Makefiles
 # environment
-VSCODE_CODE_CACHE_PATH = /Users/davidmozzafiato/Library/Application Support/Code/CachedData/da15b6fd3ef856477bf6f4fb29ba1b7af717770d
+VSCODE_CODE_CACHE_PATH = /Users/davidmozzafiato/Library/Application Support/Code/CachedData/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5
 # environment
 LOGNAME = davidmozzafiato
 # environment
@@ -103,7 +103,7 @@ TMPDIR = /var/folders/78/1l8h6yx92nz9pzn3q16cvn9m0000gn/T/
 # automatic
 *F = $(notdir $*)
 # environment
-VSCODE_IPC_HOOK = /Users/davidmozzafiato/Library/Application Support/Code/1.67.1-main.sock
+VSCODE_IPC_HOOK = /Users/davidmozzafiato/Library/Application Support/Code/1.67.2-main.sock
 # makefile
 MAKEFLAGS = Rrqp
 # environment
@@ -135,9 +135,8 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 995
+VSCODE_PID = 1494
 # variable set hash-table stats:
- 
 # Load=61/1024=6%, Rehash=0, Collisions=1/81=1%
 
 # Pattern-specific Variable Values
@@ -146,9 +145,9 @@ VSCODE_PID = 995
 
 # Directories
 
-# . (device 16777229, inode 2019074): 6 files, no impossibilities.
+# . (device 16777231, inode 2019074): 7 files, no impossibilities.
 
-# 6 files, no impossibilities in 1 directories.
+# 7 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -220,6 +219,6 @@ GNUmakefile:
 # strcache size: total = 0 / max = 0 / min = 4096 / avg = 0
 # strcache free: total = 0 / max = 0 / min = 4096 / avg = 0
 
-# Finished Make data base on Fri May 20 16:57:29 2022
+# Finished Make data base on Sat May 21 00:10:12 2022
 
  
