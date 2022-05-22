@@ -231,21 +231,18 @@ def main_menu():
                     pygame.draw.rect(dis, black, boton_Vol)
                     pygame.draw.rect(dis, white, boton_Vol, 3)
                     dis.blit(font_style.render("Volumen: " + str(volumen), True, white), (botonx+45, 116))
-
                     boton_UpV_S = pygame.Rect(botonx+260, 110, 50, 50)
                     boton_UpV = pygame.Rect(botonx+250, 100, 50, 50)
                     pygame.draw.rect(dis, green_S, boton_UpV_S, 10)
                     pygame.draw.rect(dis, black, boton_UpV)
                     pygame.draw.rect(dis, green, boton_UpV, 3)
                     dis.blit(font50.render("+", True, green), (botonx+265, 107))
-
                     boton_DnV_S = pygame.Rect(botonx-100, 110, 50, 50)
                     boton_DnV = pygame.Rect(botonx-110, 100, 50, 50)
                     pygame.draw.rect(dis, red_S, boton_DnV_S, 10)
                     pygame.draw.rect(dis, black, boton_DnV)
                     pygame.draw.rect(dis, red, boton_DnV, 3)
                     dis.blit(font50.render("-", True, red), (botonx-90, 107))
-
                     # Color Snake
                     # TODO: Reparar lista de colores
                     print('Color del snake: ' + str(colorSk.data))
@@ -254,42 +251,36 @@ def main_menu():
                     pygame.draw.rect(dis, black, boton_Sk)
                     pygame.draw.rect(dis, colorSk.data, boton_Sk, 3)
                     dis.blit(font_style.render("Color del Snake", True, colorSk.data), (botonx+40, 216))
-
                     boton_UpC_S = pygame.Rect(botonx+260, 210, 50, 50)
                     boton_UpC = pygame.Rect(botonx+250, 200, 50, 50)
                     pygame.draw.rect(dis, white_S, boton_UpC_S, 10)
                     pygame.draw.rect(dis, black, boton_UpC)
                     pygame.draw.rect(dis, colorSk.data, boton_UpC, 3)
                     dis.blit(font50.render("->", True, colorSk.data), (botonx+260, 207))
-
                     boton_DnC_S = pygame.Rect(botonx-100, 210, 50, 50)
                     boton_DnC = pygame.Rect(botonx-110, 200, 50, 50)
                     pygame.draw.rect(dis, white_S, boton_DnC_S, 10)
                     pygame.draw.rect(dis, black, boton_DnC)
                     pygame.draw.rect(dis, colorSk.data, boton_DnC, 3)
                     dis.blit(font50.render("<-", True, colorSk.data), (botonx-100, 207))
-
                     # Color Bloque
                     boton_Block_S = pygame.Rect(botonx+10, 310, 200, 50)
                     boton_Block = pygame.Rect(botonx, 300, 200, 50)
                     pygame.draw.rect(dis, black, boton_Block)
                     pygame.draw.rect(dis, colorBlock.data, boton_Block, 3)
                     dis.blit(font_style.render("Color del Snake", True, colorBlock.data), (botonx+40, 316))
-
                     boton_BlockUp_S = pygame.Rect(botonx+260, 310, 50, 50)
                     boton_BlockUp = pygame.Rect(botonx+250, 300, 50, 50)
                     pygame.draw.rect(dis, white_S, boton_BlockUp_S, 10)
                     pygame.draw.rect(dis, black, boton_BlockUp)
                     pygame.draw.rect(dis, colorBlock.data, boton_BlockUp, 3)
                     dis.blit(font50.render("->", True, colorBlock.data), (botonx+260, 307))
-
                     boton_BlockD_S = pygame.Rect(botonx-100, 310, 50, 50)
                     boton_BlockD = pygame.Rect(botonx-110, 300, 50, 50)
                     pygame.draw.rect(dis, white_S, boton_BlockD_S, 10)
                     pygame.draw.rect(dis, black, boton_BlockD)
                     pygame.draw.rect(dis, colorBlock.data, boton_BlockD, 3)
                     dis.blit(font50.render("<-", True, colorBlock.data), (botonx-100, 307))
-
                     if boton_atras.collidepoint((mx, my)):
                         if click:
                             running = False
@@ -336,7 +327,6 @@ def main_menu():
                         if event.type == MOUSEBUTTONDOWN:
                             if event.button == 1:
                                 click = True
-                    
                     pygame.display.update()
                     mainClock.tick(60)
         elif boton_3.collidepoint((mx, my)):
@@ -346,14 +336,13 @@ def main_menu():
                 while running:
                     dis.fill((black))
                     draw_text('Creditos', font, white, dis, 100, 20)
-                    # Datos 
+                    # Datos
                     creditosF = open('./PROYECTO/Viable/S_N_A_K_E/Creditos.txt', 'rt', encoding = 'utf-8')
                     draw_text(creditosF.readline(), score_font, white, dis, 100, 100)
                     draw_text(creditosF.readline(), score_font, white, dis, 100, 200)
                     draw_text(creditosF.readline(), score_font, white, dis, 100, 300)
                     draw_text(creditosF.readline(), score_font, white, dis, 100, 400)
                     draw_text(creditosF.readline(), score_font, white, dis, 100, 500)
-
                     # Boton
                     mx, my = pygame.mouse.get_pos()
                     boton_atras_S = pygame.Rect(30, 20, 50, 50)
@@ -376,7 +365,6 @@ def main_menu():
                         if event.type == MOUSEBUTTONDOWN:
                             if event.button == 1:
                                 click = True
-                    
                     pygame.display.update()
                     mainClock.tick(60)
                     creditosF.close()
@@ -400,17 +388,14 @@ def main_menu():
         pygame.draw.rect(dis, black, boton_4)
         pygame.draw.rect(dis, red, boton_4, 3)
         dis.blit(font_style.render("Salir del juego", True, (255, 255, 255)), (botonx+45, 416))
- 
         click = False
         for event in pygame.event.get():
             if event.type == QUIT:
                 pygame.quit()
             if event.type == MOUSEBUTTONDOWN:
                 if event.button == 1:
-                    click = True
- 
+                    click = Tru
         pygame.display.update()
         mainClock.tick(60)
-
 # Es el llamado a la primera función que se ejecutará
 main_menu()
