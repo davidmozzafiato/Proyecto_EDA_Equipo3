@@ -48,6 +48,7 @@ def cargar_sonidos():
     global Die
     global Vol
     global MCoin
+    global BackM
     GameSel = pygame.mixer.Sound("PROYECTO/Viable/S_N_A_K_E/Sonidos/Select.mp3")
     AppleBite = pygame.mixer.Sound("PROYECTO/Viable/S_N_A_K_E/Sonidos/AppleBite.mp3")
     Snakeeeeee = pygame.mixer.Sound("PROYECTO/Viable/S_N_A_K_E/Sonidos/Snakeeeee.mp3")
@@ -62,7 +63,7 @@ def cargar_sonidos():
 def ajustar_volumen(volume):
     GameSel.set_volume(volume)
     AppleBite.set_volume(volume)
-    Snakeeeeee.set_volume(volume)
+    #Snakeeeeee.set_volume(volume)
     Die.set_volume(volume)
     Vol.set_volume(volume)
     MCoin.set_volume(volume)
@@ -87,44 +88,34 @@ def message(msg, color, x, y):
     dis.blit(mesg, [dis_width / x, dis_height / y])
 # Menú principal
 def main_menu():
+    cargar_sonidos()
+    BackM.play()
+    volumen = 100
+    score1 = 0
     # Colores del snake
     list_double = double_linked()
     list_double.append('green')
     list_double.append('blue')
     list_double.append('red')
     list_double.append('yellow')
-
     # Colores del bloque
     listaaa = double_linked()
     listaaa.append('red')
     listaaa.append('blue')
-    listaaa.append('yellow') 
+    listaaa.append('yellow')
     listaaa.append('green')
-
-    # Prueba de funcionalidad correcta en consola
-    '''print("List :  " , str(list_double)) # Imprime "List :   green,blue,red,yellow,""
-    print("Nodo actual :  " , str(list_double.head.data))
-    print("Nodo siguiente :  " , str(list_double.head.next.data)) # Imprime "Nodo siguiente :   blue"'''
-
-    cargar_sonidos()
-    volumen = 100
-    score1 = 0
-    #colorSk = list_double.head.data # TODO: Color
     colorSk = list_double.head
     colorBlock = listaaa.head
     while True:
-        BackM.play()
         dis.fill((black))
         draw_text('S N A K E E E E E E E E E E E E', font, white_S, dis, 105, 25)
         draw_text('S N A K E E E E E E E E E E E E', font, white, dis, 100, 20)
         mx, my = pygame.mouse.get_pos()
         botonx = dis_center-100
-        # Sombras
         boton_1S = pygame.Rect(botonx+10, 110, 200, 50)
         boton_2S = pygame.Rect(botonx+10, 210, 200, 50)
         boton_3S = pygame.Rect(botonx+10, 310, 200, 50)
         boton_4S = pygame.Rect(botonx+10, 410, 200, 50)
-        # Principal
         boton_1 = pygame.Rect(botonx, 100, 200, 50)
         boton_2 = pygame.Rect(botonx, 200, 200, 50)
         boton_3 = pygame.Rect(botonx, 300, 200, 50)
@@ -132,23 +123,17 @@ def main_menu():
         if boton_1.collidepoint((mx, my)):
             if click:
                 MCoin.play()
-                # TODO: Intentar colocar musica al juego
                 game_over = False
                 game_close = False
-            
                 x1 = dis_width / 2
                 y1 = dis_height / 2
-            
                 x1_change = 0
                 y1_change = 0
-            
                 snake_List = []
                 Length_of_snake = 1
-            
                 foodx = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
                 foody = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0
                 while not game_over:
-            
                     while game_close == True:
                         Die.play()
                         dis.fill(rojo_no_tan_red)
@@ -162,7 +147,6 @@ def main_menu():
                         """if boton_1.collidepoint((mx, my)):
                             if click:
                                 GameSel.play()"""
-                                
                         if boton_2.collidepoint((mx, my)):
                             if click:
                                 GameSel.play()
@@ -172,7 +156,6 @@ def main_menu():
                         for event in pygame.event.get():
                             if event.type == QUIT:
                                 pygame.quit()
-                                #sys.exit()
                             if event.type == KEYDOWN:
                                 if event.key == K_q:
                                     game_over = True
@@ -180,13 +163,10 @@ def main_menu():
                         if event.type == MOUSEBUTTONDOWN:
                             if event.button == 1:
                                 click = True
-                        #(score1 := Length_of_snake - 1)
                         score1 = Length_of_snake - 1
                         Your_score(Length_of_snake - 1)
-                        print("score1: " + str(score1))
                         pygame.display.update()
                         mainClock.tick(60)
-            
                     for event in pygame.event.get():
                         if event.type == pygame.QUIT:
                             game_over = True
@@ -203,14 +183,12 @@ def main_menu():
                             elif event.key == pygame.K_DOWN:
                                 y1_change = snake_block
                                 x1_change = 0
-            
                     if x1 >= dis_width or x1 < 0 or y1 >= dis_height or y1 < 0:
                         game_close = True
                     x1 += x1_change
                     y1 += y1_change
                     dis.fill(black)
-
-                    # TODO: Color del bloque 
+                    # Color del bloque
                     pygame.draw.rect(dis, colorBlock.data, [foodx, foody, snake_block, snake_block])
                     snake_Head = []
                     snake_Head.append(x1)
@@ -218,18 +196,14 @@ def main_menu():
                     snake_List.append(snake_Head)
                     if len(snake_List) > Length_of_snake:
                         del snake_List[0]
-            
                     for x in snake_List[:-1]:
                         if x == snake_Head:
                             game_close = True
-
                     our_snake(snake_block, snake_List, colorSk)
                     score2 = Length_of_snake - 1
                     Your_score(Length_of_snake - 1)
                     print("score2: " + str(score2))
-            
                     pygame.display.update()
-            
                     if x1 == foodx and y1 == foody:
                         foodx = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
                         foody = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0
@@ -254,7 +228,6 @@ def main_menu():
                     botonx = dis_center-100
                     boton_Vol_S = pygame.Rect(botonx+10, 110, 200, 50)
                     boton_Vol = pygame.Rect(botonx, 100, 200, 50)
-                    #pygame.draw.rect(dis, white_S, boton_Vol_S, 10)
                     pygame.draw.rect(dis, black, boton_Vol)
                     pygame.draw.rect(dis, white, boton_Vol, 3)
                     dis.blit(font_style.render("Volumen: " + str(volumen), True, white), (botonx+45, 116))
@@ -278,7 +251,6 @@ def main_menu():
                     print('Color del snake: ' + str(colorSk.data))
                     boton_Sk_S = pygame.Rect(botonx+10, 210, 200, 50)
                     boton_Sk = pygame.Rect(botonx, 200, 200, 50)
-                    #pygame.draw.rect(dis, white_S, boton_Vol_S, 10)
                     pygame.draw.rect(dis, black, boton_Sk)
                     pygame.draw.rect(dis, colorSk.data, boton_Sk, 3)
                     dis.blit(font_style.render("Color del Snake", True, colorSk.data), (botonx+40, 216))
@@ -298,11 +270,8 @@ def main_menu():
                     dis.blit(font50.render("<-", True, colorSk.data), (botonx-100, 207))
 
                     # Color Bloque
-                    # TODO: Reparar lista de colores
-                    #print('Color del bloque: ' + str(colorBlock.data))
                     boton_Block_S = pygame.Rect(botonx+10, 310, 200, 50)
                     boton_Block = pygame.Rect(botonx, 300, 200, 50)
-                    #pygame.draw.rect(dis, white_S, boton_Vol_S, 10)
                     pygame.draw.rect(dis, black, boton_Block)
                     pygame.draw.rect(dis, colorBlock.data, boton_Block, 3)
                     dis.blit(font_style.render("Color del Snake", True, colorBlock.data), (botonx+40, 316))
@@ -339,20 +308,22 @@ def main_menu():
                     if boton_UpC.collidepoint((mx, my)):
                         if click:
                             Vol.play()
-                            # TODO: Repara el avance de los colores a lo largo de la lista
+                            # FIXME: En la última posición de la lista se rompe al avanzar.
                             colorSk = colorSk.next
                     if boton_DnC.collidepoint((mx, my)):
                         if click:
                             Vol.play()
+                            # FIXME: En la primera posición de la lista se rompe al retroceder.
                             colorSk = colorSk.prev
                     if boton_BlockUp.collidepoint((mx, my)):
                         if click:
                             Vol.play()
-                            # TODO: Repara el avance de los colores a lo largo de la lista
+                            # FIXME: En la última posición de la lista se rompe al avanzar.
                             colorBlock = colorBlock.next
                     if boton_BlockD.collidepoint((mx, my)):
                         if click:
                             Vol.play()
+                            # FIXME: En la primera posición de la lista se rompe al retroceder.
                             colorBlock = colorBlock.prev
                     click = False
                     for event in pygame.event.get():
@@ -434,12 +405,6 @@ def main_menu():
         for event in pygame.event.get():
             if event.type == QUIT:
                 pygame.quit()
-                #sys.exit()
-            # Función usada para salir del juego presionando ESC, pero se implementó un botón dedicado. ------------ # 
-            '''if event.type == KEYDOWN:
-                if event.key == K_ESCAPE:
-                    pygame.quit()
-                    sys.exit()'''
             if event.type == MOUSEBUTTONDOWN:
                 if event.button == 1:
                     click = True
