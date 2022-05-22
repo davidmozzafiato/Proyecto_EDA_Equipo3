@@ -10,7 +10,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 make: *** No rule to make target `all'.  Stop.
 
 
-# Make data base, printed on Sat May 21 00:10:12 2022
+# Make data base, printed on Sat May 21 22:51:48 2022
 
 # Variables
 
@@ -41,7 +41,7 @@ VSCODE_VERBOSE_LOGGING = true
 # environment
 __CFBundleIdentifier = com.microsoft.VSCode
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/78/1l8h6yx92nz9pzn3q16cvn9m0000gn/T/vscode-ipc-22461857-de09-4ba9-82c5-6d657074c5d6.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/78/1l8h6yx92nz9pzn3q16cvn9m0000gn/T/vscode-ipc-2a0faf5b-717b-4a5c-a386-0466d18feab1.sock
 # environment
 VSCODE_CWD = /
 # environment
@@ -69,6 +69,7 @@ HOME = /Users/davidmozzafiato
 # default
 MAKEFILEPATH = $(shell /usr/bin/xcode-select -print-path 2>/dev/null || echo /Developer)/Makefiles
 # environment
+ 
 VSCODE_CODE_CACHE_PATH = /Users/davidmozzafiato/Library/Application Support/Code/CachedData/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5
 # environment
 LOGNAME = davidmozzafiato
@@ -219,6 +220,6 @@ GNUmakefile:
 # strcache size: total = 0 / max = 0 / min = 4096 / avg = 0
 # strcache free: total = 0 / max = 0 / min = 4096 / avg = 0
 
-# Finished Make data base on Sat May 21 00:10:12 2022
+# Finished Make data base on Sat May 21 22:51:48 2022
 
  

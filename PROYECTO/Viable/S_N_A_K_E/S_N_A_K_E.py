@@ -1,5 +1,6 @@
 # Bibliotecas requeridas ----------------------------------------------------------------- #
 from asyncio.constants import LOG_THRESHOLD_FOR_CONNLOST_WRITES
+from matplotlib.font_manager import list_fonts
 import pygame, sys, random, time
 # Importación de archivos (* es para importar todas las funciones)
 from LLC import *
@@ -53,6 +54,7 @@ def cargar_sonidos():
     Die = pygame.mixer.Sound("PROYECTO/Viable/S_N_A_K_E/Sonidos/GO.wav")
     Vol = pygame.mixer.Sound("PROYECTO/Viable/S_N_A_K_E/Sonidos/Volumen.mp3")
     MCoin = pygame.mixer.Sound("PROYECTO/Viable/S_N_A_K_E/Sonidos/MCoin.wav")
+    BackM = pygame.mixer.Sound("PROYECTO/Viable/S_N_A_K_E/Sonidos/BackMusic.mp3")
     if pygame.mixer.get_init() != None:
         pygame.mixer.set_reserved(2) # reserves channels for the thrust sound and the saucer sound
         pygame.mixer.Channel(1).set_volume(0.5)
@@ -64,6 +66,7 @@ def ajustar_volumen(volume):
     Die.set_volume(volume)
     Vol.set_volume(volume)
     MCoin.set_volume(volume)
+    BackM.set_volume(volume)
 # Función para dibujar en la pantalla
 def draw_text(text, font, color, surface, x, y):
     textobj = font.render(text, 1, color)
@@ -77,28 +80,40 @@ def Your_score(score):
 # Propiedades de nuestra serpiente
 def our_snake(snake_block, snake_list, colorSk):
     for x in snake_list:
-        pygame.draw.rect(dis, colorSk, [x[0], x[1], snake_block, snake_block])
+        pygame.draw.rect(dis, colorSk.data, [x[0], x[1], snake_block, snake_block])
 # Otra forma de imprimir en pantalla
 def message(msg, color, x, y):
     mesg = font_style.render(msg, True, color)
     dis.blit(mesg, [dis_width / x, dis_height / y])
 # Menú principal
 def main_menu():
+    # Colores del snake
     list_double = double_linked()
     list_double.append('green')
     list_double.append('blue')
     list_double.append('red')
     list_double.append('yellow')
+
+    # Colores del bloque
+    listaaa = double_linked()
+    listaaa.append('red')
+    listaaa.append('blue')
+    listaaa.append('yellow') 
+    listaaa.append('green')
+
     # Prueba de funcionalidad correcta en consola
-    print("List :  " , str(list_double)) # Imprime "List :   green,blue,red,yellow,""
+    '''print("List :  " , str(list_double)) # Imprime "List :   green,blue,red,yellow,""
     print("Nodo actual :  " , str(list_double.head.data))
-    print("Nodo siguiente :  " , str(list_double.head.next.data)) # Imprime "Nodo siguiente :   blue"
-    # TODO: Color
-    colorSk = list_double.head.data
+    print("Nodo siguiente :  " , str(list_double.head.next.data)) # Imprime "Nodo siguiente :   blue"'''
 
     cargar_sonidos()
     volumen = 100
+    score1 = 0
+    #colorSk = list_double.head.data # TODO: Color
+    colorSk = list_double.head
+    colorBlock = listaaa.head
     while True:
+        BackM.play()
         dis.fill((black))
         draw_text('S N A K E E E E E E E E E E E E', font, white_S, dis, 105, 25)
         draw_text('S N A K E E E E E E E E E E E E', font, white, dis, 100, 20)
@@ -135,14 +150,11 @@ def main_menu():
                 while not game_over:
             
                     while game_close == True:
+                        Die.play()
                         dis.fill(rojo_no_tan_red)
                         draw_text('Te moriste, pensé que durarías más ):', font50, white, dis, 100, 100)
                         mx, my = pygame.mouse.get_pos()
                         botonx = dis_center-100
-                        """boton_1 = pygame.Rect(botonx, 250, 200, 50)
-                        pygame.draw.rect(dis, black, boton_1)
-                        pygame.draw.rect(dis, green, boton_1, 3)
-                        dis.blit(font_style.render("Jugar de nuevo", True, white), (botonx+40, 266))"""
                         boton_2 = pygame.Rect(botonx, 350, 200, 50)
                         pygame.draw.rect(dis, black, boton_2)
                         pygame.draw.rect(dis, red, boton_2, 3)
@@ -168,6 +180,7 @@ def main_menu():
                         if event.type == MOUSEBUTTONDOWN:
                             if event.button == 1:
                                 click = True
+                        #(score1 := Length_of_snake - 1)
                         score1 = Length_of_snake - 1
                         Your_score(Length_of_snake - 1)
                         print("score1: " + str(score1))
@@ -197,7 +210,8 @@ def main_menu():
                     y1 += y1_change
                     dis.fill(black)
 
-                    pygame.draw.rect(dis, red, [foodx, foody, snake_block, snake_block])
+                    # TODO: Color del bloque 
+                    pygame.draw.rect(dis, colorBlock.data, [foodx, foody, snake_block, snake_block])
                     snake_Head = []
                     snake_Head.append(x1)
                     snake_Head.append(y1)
@@ -261,27 +275,51 @@ def main_menu():
 
                     # Color Snake
                     # TODO: Reparar lista de colores
-                    print('Color del snake: ' + str(colorSk))
+                    print('Color del snake: ' + str(colorSk.data))
                     boton_Sk_S = pygame.Rect(botonx+10, 210, 200, 50)
                     boton_Sk = pygame.Rect(botonx, 200, 200, 50)
                     #pygame.draw.rect(dis, white_S, boton_Vol_S, 10)
                     pygame.draw.rect(dis, black, boton_Sk)
-                    pygame.draw.rect(dis, colorSk, boton_Sk, 3)
-                    dis.blit(font_style.render("Color del Snake", True, colorSk), (botonx+40, 216))
-                    
+                    pygame.draw.rect(dis, colorSk.data, boton_Sk, 3)
+                    dis.blit(font_style.render("Color del Snake", True, colorSk.data), (botonx+40, 216))
+
                     boton_UpC_S = pygame.Rect(botonx+260, 210, 50, 50)
                     boton_UpC = pygame.Rect(botonx+250, 200, 50, 50)
                     pygame.draw.rect(dis, white_S, boton_UpC_S, 10)
                     pygame.draw.rect(dis, black, boton_UpC)
-                    pygame.draw.rect(dis, colorSk, boton_UpC, 3)
-                    dis.blit(font50.render("->", True, colorSk), (botonx+260, 207))
+                    pygame.draw.rect(dis, colorSk.data, boton_UpC, 3)
+                    dis.blit(font50.render("->", True, colorSk.data), (botonx+260, 207))
 
                     boton_DnC_S = pygame.Rect(botonx-100, 210, 50, 50)
                     boton_DnC = pygame.Rect(botonx-110, 200, 50, 50)
                     pygame.draw.rect(dis, white_S, boton_DnC_S, 10)
                     pygame.draw.rect(dis, black, boton_DnC)
-                    pygame.draw.rect(dis, colorSk, boton_DnC, 3)
-                    dis.blit(font50.render("<-", True, colorSk), (botonx-100, 207))
+                    pygame.draw.rect(dis, colorSk.data, boton_DnC, 3)
+                    dis.blit(font50.render("<-", True, colorSk.data), (botonx-100, 207))
+
+                    # Color Bloque
+                    # TODO: Reparar lista de colores
+                    #print('Color del bloque: ' + str(colorBlock.data))
+                    boton_Block_S = pygame.Rect(botonx+10, 310, 200, 50)
+                    boton_Block = pygame.Rect(botonx, 300, 200, 50)
+                    #pygame.draw.rect(dis, white_S, boton_Vol_S, 10)
+                    pygame.draw.rect(dis, black, boton_Block)
+                    pygame.draw.rect(dis, colorBlock.data, boton_Block, 3)
+                    dis.blit(font_style.render("Color del Snake", True, colorBlock.data), (botonx+40, 316))
+
+                    boton_BlockUp_S = pygame.Rect(botonx+260, 310, 50, 50)
+                    boton_BlockUp = pygame.Rect(botonx+250, 300, 50, 50)
+                    pygame.draw.rect(dis, white_S, boton_BlockUp_S, 10)
+                    pygame.draw.rect(dis, black, boton_BlockUp)
+                    pygame.draw.rect(dis, colorBlock.data, boton_BlockUp, 3)
+                    dis.blit(font50.render("->", True, colorBlock.data), (botonx+260, 307))
+
+                    boton_BlockD_S = pygame.Rect(botonx-100, 310, 50, 50)
+                    boton_BlockD = pygame.Rect(botonx-110, 300, 50, 50)
+                    pygame.draw.rect(dis, white_S, boton_BlockD_S, 10)
+                    pygame.draw.rect(dis, black, boton_BlockD)
+                    pygame.draw.rect(dis, colorBlock.data, boton_BlockD, 3)
+                    dis.blit(font50.render("<-", True, colorBlock.data), (botonx-100, 307))
 
                     if boton_atras.collidepoint((mx, my)):
                         if click:
@@ -302,15 +340,20 @@ def main_menu():
                         if click:
                             Vol.play()
                             # TODO: Repara el avance de los colores a lo largo de la lista
-                            list_d = list_double.head.next
-                            list_dou = list_d.data
-                            colorSk = list_dou
+                            colorSk = colorSk.next
                     if boton_DnC.collidepoint((mx, my)):
                         if click:
                             Vol.play()
-                            list_d = list_double.head.next.prev
-                            list_dou = list_d.data
-                            colorSk = list_dou
+                            colorSk = colorSk.prev
+                    if boton_BlockUp.collidepoint((mx, my)):
+                        if click:
+                            Vol.play()
+                            # TODO: Repara el avance de los colores a lo largo de la lista
+                            colorBlock = colorBlock.next
+                    if boton_BlockD.collidepoint((mx, my)):
+                        if click:
+                            Vol.play()
+                            colorBlock = colorBlock.prev
                     click = False
                     for event in pygame.event.get():
                         if event.type == QUIT:

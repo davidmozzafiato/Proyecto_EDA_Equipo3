@@ -66,8 +66,8 @@ class double_linked():
         
 
 if __name__ == "__main__":
-    ''' Manejo de la lista '''
-    list_double = double_linked() # Crear una lista
+    # Manejo de la lista
+    '''list_double = double_linked() # Crear una lista
     list_double.append("Python") # append para agregar datos a la lista
     list_double.append("JavaScript")
     list_double.append("Java")
@@ -79,3 +79,7 @@ if __name__ == "__main__":
     print("Nodo previo del siguiente :  " , str(list_double.head.next.prev.data))
     print("Nodo antepenúltimo :  " , str(list_double.end.prev.data))
     print("Nodo end :  " , str(list_double.end.data))
+    cur = list_double.head
+    while cur is not None:
+        print(cur.data)
+        cur = cur.next'''
