@@ -136,7 +136,6 @@ def main_menu():
             
                     while game_close == True:
                         dis.fill(rojo_no_tan_red)
-                        Die.play()
                         draw_text('Te moriste, pensé que durarías más ):', font50, white, dis, 100, 100)
                         mx, my = pygame.mouse.get_pos()
                         botonx = dis_center-100
