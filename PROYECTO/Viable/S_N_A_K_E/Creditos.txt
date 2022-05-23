@@ -1,5 +1,25 @@
-Ideas: David P.
-Diseño: David P.
-Snake: David P.
-Menús: David P.
-Supervisor de la obra: El yizus Dp
+Lista ligada circular: David P.                                                              
+Andrick G.                                                                                   
+Juego: David P.                                                                              
+Emilio J.                                                                                    
+Interfaz: David P.                                                                           
+Uso de archivos: David P.                                                                    
+Fernando S.                                                                                  
+Supervisor de la obra: El Yizus DP (Tlacuache  maistro)                                                           
+           /^\/^\
+         _|__|  O|
+\/     /~     \_/ \
+ \____|__________/  \
+        \_______      \
+                `\     \                 \
+                  |     |                  \
+                 /      /                    \
+                /     /                       \\
+              /      /                         \ \
+             /     /                            \  \
+           /     /             _----_            \   \
+          /     /           _-~      ~-_         |   |
+         (      (        _-~    _--_    ~-_     _/   |
+          \      ~-____-~    _-~    ~-_    ~-_-~    /
+            ~-_           _-~          ~-_       _-~
+               ~--______-~                ~-___-~
