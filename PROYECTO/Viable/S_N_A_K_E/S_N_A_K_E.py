@@ -91,7 +91,7 @@ def main_menu():
     cargar_sonidos()
     BackM.play(20)
     # NOTE Durante los test la música está en 0, cambiar a 100 al terminar
-    volumen = 100
+    volumen = 0
     ajustar_volumen(volumen / 100.0)
     global cero
     global snake_speed
