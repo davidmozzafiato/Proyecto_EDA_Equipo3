@@ -15,7 +15,7 @@ OpenSUSE: *'sudo zypper install python3-pygame'*
 
 Arch/Manjaro: *'sudo pamac install python-pygame'*
 
-La ruta del juego es 'PROYECTO/Viable/S_N_A_K_E'.
+### La ruta del juego es 'PROYECTO/Viable/S_N_A_K_E'.
 
 Carpeta **SONIDOS**: donde se enlistan todo los sonidos usados (aunque para a decir verdad hay unos que están sin uso).
 
